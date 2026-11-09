@@ -1840,7 +1840,6 @@ tabs.other.antiAFK = true
 tabs.other.antiKnockback = true
 tabs.other.lockPosition = false
 tabs.other.autoLift = false
-tabs.other.autoSpinSoulWheel = false
 tabs.other.eggUsedThisCycle = false
 
 
@@ -2086,7 +2085,7 @@ tabs.other:AddSwitch("Anti-AFK", function(state)
                 StarterGui:SetCore("SendNotification", {
                     Title = "NF CLAN | Anti-AFK";
                     Text = "Anti-AFK successfully loaded";
-                    Icon = "https://www.roblox.com/Thumbs/Asset.ashx?width=420&height=420&assetId=94696347817037"; -- Pinalitan ko ang format ng asset ID para mas sigurado
+                    Icon = "https://www.roblox.com/Thumbs/Asset.ashx?width=420&height=420&assetId=79497477420812"; -- Pinalitan ko ang format ng asset ID para mas sigurado
                     Duration = 5;
                 })
             end)
@@ -2453,6 +2452,13 @@ tabs.other2:AddButton("Auto Vender Boss Pets (Auto Equip Best Pets)", function()
 		["Epic Boss Pet"] = true,
 		["Rare Boss Pet"] = true,
 		["Common Boss Pet"] = true,
+		["Swift Samurai"] = true,
+		["Tribal Overlord"] = true,
+		["Wild Wizard"] = true,
+		["Mighty Monster"] = true,
+		["Omega Overlord"] = true,
+		["Titanium Hydra"] = true,
+		["Powercore Hound"] = true,
     }
 
     local totalSold = 0
@@ -2689,7 +2695,7 @@ tabs.info:AddLabel("Welcome to NightFlame Clan (NF CLAN)").TextSize = 20
 createSeparator()
 
 -- [[ DEV CREDITS WITH RAINBOW EFFECT ]]
-local devLabel = tabs.info:AddLabel("Developer: Kaizerr")
+local devLabel = tabs.info:AddLabel("Script Developer: Kaizerr")
 devLabel.TextSize = 22
 
 -- Rainbow Script for Owner Label
