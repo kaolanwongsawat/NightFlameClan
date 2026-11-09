@@ -1956,6 +1956,8 @@ tabs.other:AddSwitch("Spin Fortune Wheel", function(bool)
     end
 end)
 
+tabs.other:AddLabel("Misc 2:)
+
 local Players = game:GetService("Players")
 local VirtualUser = game:GetService("VirtualUser")
 local TeleportService = game:GetService("TeleportService")
@@ -2174,6 +2176,8 @@ tabs.other:AddSwitch("Free Auto Lift (Bypassed)", function(state)
     end)
 end)
 
+tabs.other:AddLabel("Misc 3:)
+
 
 tabs.other.boostItemList = {
     "Tropical Shake",
@@ -2385,7 +2389,7 @@ tabs.other2:AddButton("Rainbow Boss Pet", function()
     equipPetsByName("Rainbow Boss Pet")
 end)
 
-tabs.other2:AddLabel("~~~~~~~~~~")
+tabs.other2:AddLabel("__________")
 
 tabs.other2:AddLabel("Equip Pack Pets")
 
@@ -2409,9 +2413,9 @@ tabs.other2:AddButton("Titanium Hydra", function()
     equipPetsByName("Titanium Hydra")
 end)
 
-tabs.other2:AddLabel("~~~~~~~~~~")
+tabs.other2:AddLabel("__________")
 
-tabs.other2:AddLabel("Equip Health & Damage Packs")
+tabs.other2:AddLabel("Equip Damage & Health Packs")
 
 tabs.other2:AddButton("Mighty Monster", function()
     unequipPets()
@@ -2472,7 +2476,7 @@ tabs.other2:AddButton("Auto Vender Boss Pets (Auto Equip Best Pets)", function()
 end)
 
 
-tabs.other2:AddLabel("~~~~~~~~~~")
+tabs.other2:AddLabel("__________")
 
 tabs.other2:AddLabel("Performance")
 
@@ -2683,7 +2687,7 @@ tabs.info:AddLabel("Welcome to NightFlame Clan (NF CLAN)").TextSize = 20
 createSeparator()
 
 -- [[ DEV CREDITS WITH RAINBOW EFFECT ]]
-local devLabel = tabs.info:AddLabel("👑Developer: Kaizerr")
+local devLabel = tabs.info:AddLabel("Developer: Kaizerr")
 devLabel.TextSize = 22
 
 -- Rainbow Script for Owner Label
