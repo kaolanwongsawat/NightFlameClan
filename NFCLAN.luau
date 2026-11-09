@@ -59,7 +59,7 @@ services.touchParts = function(part, hand, state)
     return pcall(firetouchinterest, part, hand, state)
 end
 
-local library = loadstring(game:HttpGet("https://codeberg.org/PRUEBACUENTAZEUS/GUI-libraries/raw/branch/main/NF_Clan.png.txt", true))()
+local library = loadstring(game:HttpGet("https://codeberg.org/PRUEBACUENTAZEUS/GUI-libraries/raw/branch/main/NF_Clan.png", true))()
 local silence = library:AddWindow("NF CLAN | Muscle Legends | Fast Farming - Packs & Boss Farming", {
     title_bar = {Color3.fromRGB(0, 0, 0), Color3.fromRGB(0, 0, 0), Color3.fromRGB(0, 0, 0)},
     title_bar_transparency = 0.2,
@@ -2082,7 +2082,7 @@ tabs.other:AddSwitch("Anti-AFK", function(state)
                 StarterGui:SetCore("SendNotification", {
                     Title = "NF CLAN | Anti-AFK";
                     Text = "Anti-AFK successfully loaded";
-                    Icon = "https://www.roblox.com/Thumbs/Asset.ashx?width=420&height=420&assetId=93973985828229"; -- Pinalitan ko ang format ng asset ID para mas sigurado
+                    Icon = "https://www.roblox.com/Thumbs/Asset.ashx?width=420&height=420&assetId=94696347817037"; -- Pinalitan ko ang format ng asset ID para mas sigurado
                     Duration = 5;
                 })
             end)
