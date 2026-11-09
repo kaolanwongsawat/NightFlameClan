@@ -59,8 +59,8 @@ services.touchParts = function(part, hand, state)
     return pcall(firetouchinterest, part, hand, state)
 end
 
-local library = loadstring(game:HttpGet("https://codeberg.org/PRUEBACUENTAZEUS/PaidLib/raw/branch/main/M14Library.lua", true))()
-local silence = library:AddWindow("NF CLAN | Fast Farming - Packs & Boss Farming", {
+local library = loadstring(game:HttpGet("https://codeberg.org/PRUEBACUENTAZEUS/GUI-libraries/raw/branch/main/NF_Clan.png.txt", true))()
+local silence = library:AddWindow("NF CLAN | Muscle Legends | Fast Farming - Packs & Boss Farming", {
     title_bar = {Color3.fromRGB(0, 0, 0), Color3.fromRGB(0, 0, 0), Color3.fromRGB(0, 0, 0)},
     title_bar_transparency = 0.2,
     background = {Color3.fromRGB(0, 0, 0), Color3.fromRGB(0, 0, 0), Color3.fromRGB(0, 0, 0)},
