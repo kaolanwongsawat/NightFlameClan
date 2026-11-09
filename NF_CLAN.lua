@@ -1,84 +1,3 @@
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-local whitelistURL = "https://raw.githubusercontent.com/Zaiker67/WhitelistPaid/refs/heads/main/WhitelistedPlayers-Paid.lua"
-local whitelist = {}
-
-local function isPlayerValid()
-    if type(LocalPlayer.Name) ~= "string" then
-        return false
-    end
-    if LocalPlayer.UserId <= 0 then
-        return false
-    end
-    return true
-end
-
--- Fetch whitelist
-local function fetchWhitelist()
-    local fetchResult = {
-        pcall(function()
-            return game:HttpGet(whitelistURL)
-        end)
-    }
-
-    if not fetchResult[1] then
-        return false, "WHITELIST_FETCH_FAILED"
-    end
-
-    local whitelistData = fetchResult[2]
-    local loadResult = {
-        pcall(function()
-            return loadstring(whitelistData)()
-        end)
-    }
-
-    if not loadResult[1] or type(loadResult[2]) ~= "table" then
-        return false, "INVALID_WHITELIST_DATA"
-    end
-
-    whitelist = loadResult[2]
-    return true
-end
-
-local fetchSuccess, fetchError = fetchWhitelist()
-if not fetchSuccess then
-    LocalPlayer:Kick(fetchError or "Whitelist fetch failed")
-    return
-end
-
-if not isPlayerValid() then
-    LocalPlayer:Kick("Spoof detected.")
-    return
-end
-
-local function isWhitelisted()
-    local playerName = LocalPlayer.Name
-    if whitelist[playerName] == true then
-        return true
-    end
-    for _, name in ipairs(whitelist) do
-        if name == playerName then
-            return true
-        end
-    end
-    return false
-end
-
-if not isWhitelisted() then
-    LocalPlayer:Kick("Kicked | Reason: Hindi Ka Nagbayad sakin PULPOL KANG PAKENING BULLSHIT KA!")
-    return
-end
-
--- Runtime spoof detection
-task.spawn(function()
-    while task.wait(3) do
-        if not isPlayerValid() then
-            LocalPlayer:Kick("Spoof detected (runtime).")
-            break
-        end
-    end
-end)
-
 local services = {
     players = game:GetService("Players"),
     replicatedstorage = game:GetService("ReplicatedStorage"),
@@ -141,24 +60,24 @@ services.touchParts = function(part, hand, state)
 end
 
 local library = loadstring(game:HttpGet("https://codeberg.org/PRUEBACUENTAZEUS/PaidLib/raw/branch/main/M14Library.lua", true))()
-local silence = library:AddWindow("M1887 | Paid Version - Pack & Boss Farm", {
-    title_bar = {Color3.fromRGB(0, 0, 0), Color3.fromRGB(20, 20, 20), Color3.fromRGB(128, 128, 128)},
+local silence = library:AddWindow("NF CLAN | Fast Farming - Packs & Boss Farming", {
+    title_bar = {Color3.fromRGB(0, 0, 0), Color3.fromRGB(0, 0, 0), Color3.fromRGB(0, 0, 0)},
     title_bar_transparency = 0.2,
-    background = {Color3.fromRGB(0, 0, 0), Color3.fromRGB(80, 80, 80), Color3.fromRGB(60, 60, 60)},
+    background = {Color3.fromRGB(0, 0, 0), Color3.fromRGB(0, 0, 0), Color3.fromRGB(0, 0, 0)},
     background_transparency = 0.1,
-    main_color = Color3.fromRGB(128, 128, 128),
+    main_color = Color3.fromRGB(0, 0, 0),
     min_size = Vector2.new(500, 560),
     can_resize = false
 })
 
 local tabs = {
     rebirths = silence:AddTab("Fast Rebirth"),
-    strength = silence:AddTab("Fast FarmV1 (Boss Pet)"),
-    strength2 = silence:AddTab("Fast FarmV2 (Packs)"),
-    boss = silence:AddTab("Kill Boss"),
-    other = silence:AddTab("MiscV1"),
-	other2 = silence:AddTab("MiscV2"),
-	other3 = silence:AddTab("Machines (Miscv3)"),
+    strength = silence:AddTab("Fast Strength V1(Boss Pets)"),
+    strength2 = silence:AddTab("Fast Strength V2 (Pack Pets)"),
+    boss = silence:AddTab("Boss"),
+    other = silence:AddTab("Miscellaneous 1"),
+	other2 = silence:AddTab("Miscellaneous 2"),
+	other3 = silence:AddTab("Machines"),
     info = silence:AddTab("Info")
 }
 
@@ -614,7 +533,7 @@ end)
 
 tabs.rebirths:AddLabel("Rebirthing:")
 
-tabs.rebirths:AddSwitch("Fast Rebirth (Supported Packs & Boss Pets)", function(state)
+tabs.rebirths:AddSwitch("Fast Rebirth (Yes, Packs & Boss Pets)", function(state)
     tabs.rebirths.running = state
     if state then
         tabs.rebirths.hasStarted = true
@@ -726,7 +645,7 @@ end
 ----------------------------------------------------------------------
 
 -- Auto Rebirth Gamepass Bypass & Toggle
-tabs.rebirths:AddSwitch("Auto Rebirth Gamepass (Bypassed)", function(state)
+tabs.rebirths:AddSwitch("Bypassed Auto Rebirth Gamepass", function(state)
     autoRebirthEnabled = state
     
     -- Set Player Attributes
@@ -1023,7 +942,7 @@ task.spawn(function()
     end
 end)
 
-tabs.strength:AddLabel("Fast FarmV1 (Pwede sa Boss Pets & Pack Pets)")
+tabs.strength:AddLabel("Fast Strength V1 (Supported Boss Pets & Pack Pets)")
 
 -- Strength Tab (For bad devices)
 
@@ -1253,7 +1172,7 @@ task.spawn(function()
         task.wait(1)
     end
 end)
-tabs.strength2:AddLabel("Fast FarmV2 for Packs")
+tabs.strength2:AddLabel("Fast Strength V2 for Packs")
 
 tabs.boss.runtime = {}
 
@@ -2161,9 +2080,9 @@ tabs.other:AddSwitch("Anti-AFK", function(state)
         task.spawn(function()
             pcall(function()
                 StarterGui:SetCore("SendNotification", {
-                    Title = "M1887 | Anti-AFK";
+                    Title = "NF CLAN | Anti-AFK";
                     Text = "Anti-AFK successfully loaded";
-                    Icon = "https://www.roblox.com/Thumbs/Asset.ashx?width=420&height=420&assetId=79693252930451"; -- Pinalitan ko ang format ng asset ID para mas sigurado
+                    Icon = "https://www.roblox.com/Thumbs/Asset.ashx?width=420&height=420&assetId=71723056323364"; -- Pinalitan ko ang format ng asset ID para mas sigurado
                     Duration = 5;
                 })
             end)
@@ -2243,7 +2162,7 @@ local autoLiftEnabled = false
 ----------------------------------------------------------------------
 
 -- Free Auto Lift Toggle
-tabs.other:AddSwitch("Gamepass Auto Lift", function(state)
+tabs.other:AddSwitch("Free Auto Lift (Bypassed)", function(state)
     autoLiftEnabled = state
     localPlayer:SetAttribute("AutoLiftEnabled", autoLiftEnabled)
     
@@ -2504,6 +2423,54 @@ tabs.other2:AddButton("Wild Wizard", function()
     equipPetsByName("Wild Wizard")
 end)
 
+tabs.other2:AddLabel("Automatically Equip Your Best Pets for Grinding")
+
+tabs.other2:AddButton("Auto Vender Boss Pets (Auto Equip Best Pets)", function()
+    local petsFolder = game.Players.LocalPlayer:FindFirstChild("petsFolder")
+    local rEvents = ReplicatedStorage:FindFirstChild("rEvents")
+    local sellEvent = rEvents and (rEvents:FindFirstChild("sellPetEvent") or rEvents:FindFirstChild("SellPetEvent"))
+
+    if not petsFolder then
+        warn("❌ No se encontró la carpeta 'petsFolder'.")
+        return
+    end
+    if not sellEvent then
+        warn("❌ No se encontró el evento 'sellPetEvent'.")
+        return
+    end
+
+    -- Lista de mascotas a vender
+    local autoSellPetsByName = {
+        ["Mythic Boss Pet"] = true,
+        ["Legendary Boss Pet"] = true,
+		["Rainbow Boss Pet"] = true,
+		["Epic Boss Pet"] = true,
+		["Rare Boss Pet"] = true,
+		["Common Boss Pet"] = true,
+    }
+
+    local totalSold = 0
+    for _, rarityFolder in pairs(petsFolder:GetChildren()) do
+        if rarityFolder:IsA("Folder") then
+            for _, pet in pairs(rarityFolder:GetChildren()) do
+                if autoSellPetsByName[pet.Name] then
+                    pcall(function()
+                        if sellEvent:IsA("RemoteFunction") then
+                            sellEvent:InvokeServer("sellPet", pet)
+                        else
+                            sellEvent:FireServer("sellPet", pet)
+                        end
+                    end)
+                    print("💸 Vendido:", pet.Name)
+                    totalSold += 1
+                    task.wait(0.1)
+                end
+            end
+        end
+    end
+    print("Total vendido:", totalSold)
+end)
+
 
 tabs.other2:AddLabel("~~~~~~~~~~")
 
@@ -2712,11 +2679,11 @@ local function createSeparator()
 end
 
 -- [[ HEADER SECTION ]]
-tabs.info:AddLabel("Welcome to M1887 | Paid Version").TextSize = 20
+tabs.info:AddLabel("Welcome to NightFlame Clan (NF CLAN)").TextSize = 20
 createSeparator()
 
 -- [[ DEV CREDITS WITH RAINBOW EFFECT ]]
-local devLabel = tabs.info:AddLabel("Developer 👑: BossKenzou")
+local devLabel = tabs.info:AddLabel("👑Developer: Kaizerr")
 devLabel.TextSize = 22
 
 -- Rainbow Script for Owner Label
@@ -2728,7 +2695,7 @@ task.spawn(function()
 end)
 
 -- [[ DEV CREDITS WITH RAINBOW EFFECT ]]
-local devLabel = tabs.info:AddLabel("Tester 👌: XxSOE_GaGAxX")
+local devLabel = tabs.info:AddLabel("MainLeader: NF_eyuns")
 devLabel.TextSize = 20
 
 -- Rainbow Script for Owner Label
@@ -2739,45 +2706,13 @@ task.spawn(function()
     end
 end)
 
-tabs.info:AddLabel("Special Thanks to our Tester ❤️").TextSize = 15
-createSeparator()
-
-tabs.info:AddLabel("✨ Specialized Farming Script ✨").TextSize = 15
-createSeparator()
-
-tabs.info:AddLabel("TikTok: Kenzouu Warfreakkk!").TextSize = 15
-
-tabs.info:AddLabel("If you encountered any problem, PM/DM me on TikTok").TextSize = 14
-createSeparator()
-
--- [[ TIKTOK SECTION ]]
-tabs.info:AddLabel("🔗 OFFICIAL TIKTOK ACCOUNT")
-local tiktokBtn = tabs.info:AddButton("📋 COPY TIKTOK LINK", function()
-    local link = "https://www.tiktok.com/@officialkenzouu"
-    
-    if setclipboard then
-        setclipboard(link)
-        -- Fancy Notification
-        game.StarterGui:SetCore("SendNotification", {
-            Title = "Link Copied!";
-            Text = "Pa Follow na rin ako sa Tiktok.";
-            Icon = "https://www.roblox.com/Thumbs/Asset.ashx?width=420&height=420&assetId=79956122844756"; -- Success Icon
-            Duration = 5;
-        })
-    else
-        game:GetService("TestService"):Message("Clipboard not supported.")
-    end
-end)
-
--- [[ STATUS SECTION ]]
-tabs.info:AddLabel("💠 Script Status: [ ONLINE ]")
-tabs.info:AddLabel("🚀 PAID VERSION: 1.3")
+tabs.info:AddLabel("Join On NF CLAN Now!").TextSize = 15
 createSeparator()
 
 -- [[ FOOTER SECTION - THE "ON TOP" ANIMATION ]]
-local wLabel = tabs.info:AddLabel("🔥 M1887 ON TOP 🔥")
+local wLabel = tabs.info:AddLabel("🔥 NightFlame ON TOP 🔥")
 wLabel.TextSize = 35
-wLabel.Font = Enum.Font.LuckiestGuy
+wLabel.Font = Enum.Font.Arcade
 
 -- Pulse & Rainbow Animation for the Footer
 task.spawn(function()
@@ -2795,7 +2730,7 @@ end)
 
 -- [[ ADDITIONAL DECORATIONS ]]
 tabs.info:AddLabel("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬")
-tabs.info:AddLabel("💎 THANK YOU FOR USING MY SCRIPT 💎").TextSize = 12
+tabs.info:AddLabel("💎 SPECIALIZED SCRIPT FOR CLAN 💎").TextSize = 12
 
 -- Typewriter Effect sa status
 local statusLabel = tabs.info:AddLabel("Loading System...")
