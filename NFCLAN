@@ -2082,7 +2082,7 @@ tabs.other:AddSwitch("Anti-AFK", function(state)
                 StarterGui:SetCore("SendNotification", {
                     Title = "NF CLAN | Anti-AFK";
                     Text = "Anti-AFK successfully loaded";
-                    Icon = "https://www.roblox.com/Thumbs/Asset.ashx?width=420&height=420&assetId=71723056323364"; -- Pinalitan ko ang format ng asset ID para mas sigurado
+                    Icon = "https://www.roblox.com/Thumbs/Asset.ashx?width=420&height=420&assetId=93973985828229"; -- Pinalitan ko ang format ng asset ID para mas sigurado
                     Duration = 5;
                 })
             end)
